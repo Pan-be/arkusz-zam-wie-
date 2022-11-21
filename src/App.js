@@ -1,4 +1,4 @@
-import Games from "./components/Game"
+import Games from "./components/Games"
 
 function App() {
 	const games = [

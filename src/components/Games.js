@@ -1,4 +1,4 @@
-import Game from "Game"
+import Game from "./Game"
 import styles from "./Games.module.css"
 
 const Games = (props) => {
