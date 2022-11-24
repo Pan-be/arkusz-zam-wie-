@@ -1,6 +1,6 @@
 import styles from "./Game.module.css"
-import Card from "./Card.js"
-import OrderInput from "./OrderInput"
+import Card from "../UI/Card.js"
+import OrderInput from "../OrderInput"
 
 const Game = (props) => {
 	return (
