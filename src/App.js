@@ -1,3 +1,4 @@
+import CustomerDetails from "./components/CustomerDetails/CustomerDetails"
 import Games from "./components/Games/Games"
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 	return (
 		<div className='App'>
 			<Games games={games} />
+			<CustomerDetails />
 		</div>
 	)
 }
