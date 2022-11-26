@@ -11,6 +11,10 @@
 	-webkit-appearance: none;
 }
 
+.input input[type="number"] {
+	-moz-appearance: textfield;
+}
+
 .input-container {
 	position: relative;
 	width: 70px;

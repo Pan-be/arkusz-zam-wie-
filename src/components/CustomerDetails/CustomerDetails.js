@@ -34,7 +34,7 @@ const CustomerDetails = (props) => {
 						zamówienie w formacie PDF - proszę je przesłać na adres e-mail
 						obsługującego przedstawiciela wydawnictwa Lucrum Games:
 					</label>
-					<button type='submit' name='submit'>
+					<button onClick={props.pdfGenerator} name='submit'>
 						<span>generuj</span>
 					</button>
 				</div>
