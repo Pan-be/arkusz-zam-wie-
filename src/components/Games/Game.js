@@ -3,6 +3,11 @@ import Card from "../UI/Card.js"
 import OrderInput from "../OrderInput"
 
 const Game = (props) => {
+	const saveNumOfGamesHandler = (num) => {
+		props.onSaveNum(num)
+		return num
+	}
+
 	return (
 		<Card className={styles.game}>
 			<h2>{props.title}</h2>
@@ -21,7 +26,7 @@ const Game = (props) => {
 				</div>
 				<div className={styles["game-price"]}>Wartość: {props.scd}zł</div>
 			</div>
-			<OrderInput />
+			<OrderInput onSaveNumOfGames={saveNumOfGamesHandler} />
 		</Card>
 	)
 }

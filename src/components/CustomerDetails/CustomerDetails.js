@@ -6,7 +6,7 @@ const CustomerDetails = (props) => {
 			<div className={styles["customer-details__controls"]}>
 				<div className={styles["customer-details__control"]}>
 					<label htmlFor='name'>Nazwa Firmy:</label>
-					<input type='text' name='name' />
+					<input type='text' name='name' onChange={props.comNameHandler} />
 				</div>
 				<div className={styles["customer-details__control"]}>
 					<label htmlFor='nip'>NIP:</label>
@@ -34,7 +34,7 @@ const CustomerDetails = (props) => {
 						zamówienie w formacie PDF - proszę je przesłać na adres e-mail
 						obsługującego przedstawiciela wydawnictwa Lucrum Games:
 					</label>
-					<button onClick={props.pdfGenerator} name='submit'>
+					<button type='submit' name='submit'>
 						<span>generuj</span>
 					</button>
 				</div>

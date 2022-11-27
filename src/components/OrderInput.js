@@ -32,7 +32,7 @@ const OrderInput = (props) => {
 						type='number'
 						name='order'
 						min='0'
-						value={num}
+						value={props.onSaveNumOfGames(num)}
 						onChange={handleChange}
 					/>
 				</div>
