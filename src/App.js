@@ -5,14 +5,22 @@ import Games from "./components/Games/Games"
 
 function App() {
 	const games = [
-		{ id: "g1", title: "Brzdęk w kosmosie", package: 6, scd: 229.99 },
-		{ id: "g2", title: "Dobry Rok", package: 8, scd: 199 },
-		{ id: "g3", title: "Rollo", package: 24, scd: 39.9 },
+		{
+			id: "g1",
+			EAN: 1234,
+			title: "Brzdęk w kosmosie",
+			package: 6,
+			scd: 229.99,
+		},
+		{ id: "g2", EAN: 1234, title: "Dobry Rok", package: 8, scd: 199 },
+		{ id: "g3", EAN: 1234, title: "Rollo", package: 24, scd: 39.9 },
 	]
 	let numb
 	const numGetter = (num) => {
 		console.log(`${num} from App.js`)
-		numb = num
+		if (num > 0) {
+			numb = num
+		}
 		return numb
 	}
 
@@ -52,8 +60,7 @@ function App() {
 			comNIP: comNIP,
 			comAddress: comAddress,
 			comComments: comComments,
-			game: games[0].title,
-			numberOfGames: numb,
+			games: numb,
 		}
 		console.log(order)
 	}

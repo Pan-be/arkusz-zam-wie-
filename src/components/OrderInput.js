@@ -3,6 +3,7 @@ import styles from "./OrderInput.module.css"
 
 const OrderInput = (props) => {
 	const [num, setNum] = useState("")
+	const [multiplier, setMultiplier] = useState(1)
 
 	const addition = () => {
 		// console.log("added")
@@ -19,6 +20,8 @@ const OrderInput = (props) => {
 
 	const handleChange = (e) => {
 		setNum(parseInt(e.target.value))
+		setMultiplier(num)
+		return multiplier
 	}
 
 	return (

@@ -10,6 +10,7 @@ const Games = (props) => {
 		<Card className={styles.games}>
 			<Game
 				title={props.games[0].title}
+				EAN={props.games[0].EAN}
 				package={props.games[0].package}
 				scd={props.games[0].scd}
 				onSaveNum={saveNumHandler}
