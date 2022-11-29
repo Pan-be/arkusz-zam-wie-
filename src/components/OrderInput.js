@@ -28,14 +28,18 @@ const OrderInput = (props) => {
 		<div className={styles.input}>
 			<label htmlFor='order'>Zamawiana ilość</label>
 			<div className={styles["input-container"]}>
-				<span className={styles.prev} onClick={substraction}></span>
-				<span className={styles.next} onClick={addition}></span>
+				<span
+					className={styles.prev}
+					onClick={() => props.onDecrement(props.ean)}></span>
+				<span
+					className={styles.next}
+					onClick={() => props.onIncrement(props.ean)}></span>
 				<div>
 					<input
 						type='number'
 						name='order'
 						min='0'
-						value={props.onSaveNumOfGames(num)}
+						value={props.amount}
 						onChange={handleChange}
 					/>
 				</div>

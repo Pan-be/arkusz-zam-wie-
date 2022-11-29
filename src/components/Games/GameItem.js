@@ -30,8 +30,6 @@ const Game = (props) => {
 
 	let inputNum = 1
 
-	const totalValue = inputNum * price
-
 	const saveNumOfGamesHandler = (num) => {
 		props.onSaveNum(num)
 		return num
@@ -56,9 +54,17 @@ const Game = (props) => {
 				<div>
 					Cena: <span>{price}zł</span>
 				</div>
-				<div className={styles["game-price"]}>Wartość: {totalValue}zł</div>
+				<div className={styles["game-price"]}>
+					Wartość: {price * props.amount}zł
+				</div>
 			</div>
-			<OrderInput onSaveNumOfGames={saveNumOfGamesHandler} />
+			<OrderInput
+				ean={props.ean}
+				amount={props.amount}
+				onSaveNumOfGames={saveNumOfGamesHandler}
+				onIncrement={props.onIncrement}
+				onDecrement={props.onDecrement}
+			/>
 		</Card>
 	)
 }

@@ -1,27 +1,63 @@
 // import jsPDF from "jspdf"
 import { useState } from "react"
 import CustomerDetails from "./components/CustomerDetails/CustomerDetails"
-import Games from "./components/Games/Games"
+import Games from "./components/Games/GameList"
 
 function App() {
-	const games = [
+	const [games, setGames] = useState([
 		{
 			id: "g1",
-			EAN: 1234,
+			ean: 1234,
 			title: "Brzdęk w kosmosie",
 			package: 6,
 			scd: 229.99,
+			amount: 0,
 		},
-		{ id: "g2", EAN: 1234, title: "Dobry Rok", package: 8, scd: 199 },
-		{ id: "g3", EAN: 1234, title: "Rollo", package: 24, scd: 39.9 },
-	]
+		{
+			id: "g2",
+			ean: 222,
+			title: "Dobry Rok",
+			package: 8,
+			scd: 199,
+			amount: 0,
+		},
+		{ id: "g3", ean: 434, title: "Rollo", package: 24, scd: 39.9, amount: 0 },
+	])
 	let numb
 	const numGetter = (num) => {
-		console.log(`${num} from App.js`)
+		// console.log(`${num} from App.js`)
 		if (num > 0) {
 			numb = num
 		}
 		return numb
+	}
+
+	const incrementGame = (ean) => {
+		setGames((games) => {
+			return games.map((game) => {
+				if (game.ean === ean) {
+					return {
+						...game,
+						amount: game.amount + 1,
+					}
+				}
+				return game
+			})
+		})
+	}
+
+	const decrementGame = (ean) => {
+		setGames((games) => {
+			return games.map((game) => {
+				if (game.ean === ean && game.amount > 0) {
+					return {
+						...game,
+						amount: game.amount - 1,
+					}
+				}
+				return game
+			})
+		})
 	}
 
 	// const generatePDF = () => {
@@ -68,7 +104,12 @@ function App() {
 	return (
 		<div className='App'>
 			<form onSubmit={submitHandler}>
-				<Games games={games} onGetNum={numGetter} />
+				<Games
+					games={games}
+					onGetNum={numGetter}
+					incrementGame={incrementGame}
+					decrementGame={decrementGame}
+				/>
 				<CustomerDetails
 					comNameHandler={comNameHandler}
 					comNIPHandler={comNIPHandler}
