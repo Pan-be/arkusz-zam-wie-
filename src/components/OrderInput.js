@@ -2,21 +2,8 @@ import { useState } from "react"
 import styles from "./OrderInput.module.css"
 
 const OrderInput = (props) => {
-	const [num, setNum] = useState("")
+	const [num, setNum] = useState(props.amount)
 	const [multiplier, setMultiplier] = useState(1)
-
-	const addition = () => {
-		// console.log("added")
-		setNum(parseInt(num + 1))
-	}
-
-	const substraction = () => {
-		if (num > 0) {
-			setNum(parseInt(num - 1))
-		} else if (num === 0) {
-			setNum("")
-		}
-	}
 
 	const handleChange = (e) => {
 		setNum(parseInt(e.target.value))
@@ -40,7 +27,8 @@ const OrderInput = (props) => {
 						name='order'
 						min='0'
 						value={props.amount}
-						onChange={handleChange}
+						// onChange={handleChange}
+						onChange={() => props.onTypeValue(props.ean, props.amount)}
 					/>
 				</div>
 			</div>

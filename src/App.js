@@ -23,14 +23,14 @@ function App() {
 		},
 		{ id: "g3", ean: 434, title: "Rollo", package: 24, scd: 39.9, amount: 0 },
 	])
-	let numb
-	const numGetter = (num) => {
-		// console.log(`${num} from App.js`)
-		if (num > 0) {
-			numb = num
-		}
-		return numb
-	}
+	// let numb
+	// const numGetter = (num) => {
+	// 	// console.log(`${num} from App.js`)
+	// 	if (num > 0) {
+	// 		numb = num
+	// 	}
+	// 	return numb
+	// }
 
 	const incrementGame = (ean) => {
 		setGames((games) => {
@@ -53,6 +53,20 @@ function App() {
 					return {
 						...game,
 						amount: game.amount - 1,
+					}
+				}
+				return game
+			})
+		})
+	}
+
+	const typeValue = (ean, typedAmount) => {
+		setGames((games) => {
+			return games.map((game) => {
+				if (game.ean === ean) {
+					return {
+						...game,
+						amount: typedAmount,
 					}
 				}
 				return game
@@ -96,7 +110,6 @@ function App() {
 			comNIP: comNIP,
 			comAddress: comAddress,
 			comComments: comComments,
-			games: numb,
 		}
 		console.log(order)
 	}
@@ -106,9 +119,10 @@ function App() {
 			<form onSubmit={submitHandler}>
 				<Games
 					games={games}
-					onGetNum={numGetter}
+					// onGetNum={numGetter}
 					incrementGame={incrementGame}
 					decrementGame={decrementGame}
+					typeValue={typeValue}
 				/>
 				<CustomerDetails
 					comNameHandler={comNameHandler}

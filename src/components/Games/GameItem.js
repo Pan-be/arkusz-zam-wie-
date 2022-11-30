@@ -25,15 +25,13 @@ const Game = (props) => {
 	const discount = 0.35
 	const scd = props.scd
 	const gameName = props.title
-	const ean = props.EAN
+	const ean = props.ean
 	const price = roundTo(scd - scd * discount, 2)
 
-	let inputNum = 1
-
-	const saveNumOfGamesHandler = (num) => {
-		props.onSaveNum(num)
-		return num
-	}
+	// const saveNumOfGamesHandler = (num) => {
+	// 	props.onSaveNum(num)
+	// 	return num
+	// }
 
 	return (
 		<Card className={styles.game}>
@@ -55,15 +53,16 @@ const Game = (props) => {
 					Cena: <span>{price}zł</span>
 				</div>
 				<div className={styles["game-price"]}>
-					Wartość: {price * props.amount}zł
+					Wartość: {roundTo(price * props.amount, 2)}zł
 				</div>
 			</div>
 			<OrderInput
 				ean={props.ean}
 				amount={props.amount}
-				onSaveNumOfGames={saveNumOfGamesHandler}
+				// onSaveNumOfGames={saveNumOfGamesHandler}
 				onIncrement={props.onIncrement}
 				onDecrement={props.onDecrement}
+				onTypeValue={props.typeValue}
 			/>
 		</Card>
 	)

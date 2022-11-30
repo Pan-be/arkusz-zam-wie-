@@ -3,9 +3,9 @@ import Card from "../UI/Card"
 import styles from "./Games.module.css"
 
 const Games = (props) => {
-	const saveNumHandler = (num) => {
-		props.onGetNum(num)
-	}
+	// const saveNumHandler = (num) => {
+	// 	props.onGetNum(num)
+	// }
 	return (
 		<Card className={styles.games}>
 			{props.games.map((game) => {
@@ -17,9 +17,10 @@ const Games = (props) => {
 						package={game.package}
 						scd={game.scd}
 						amount={game.amount}
-						onSaveNum={saveNumHandler}
+						// onSaveNum={saveNumHandler}
 						onIncrement={props.incrementGame}
 						onDecrement={props.decrementGame}
+						typeValue={props.typeValue}
 					/>
 				)
 			})}
