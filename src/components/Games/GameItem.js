@@ -1,9 +1,9 @@
 import styles from "./Game.module.css"
 import Card from "../UI/Card.js"
 import OrderInput from "../OrderInput"
-import { useState } from "react"
 
 const Game = (props) => {
+
 	//   ---- round helper
 	const roundTo = (n, digits) => {
 		if (digits === undefined) {
@@ -16,27 +16,17 @@ const Game = (props) => {
 	}
 	// -----
 
-	// let numOfGames
-	// const getNumberOfGame = (num) => {
-	// 	if (num > 0) {
-	// 		numOfGames = num
-	// 	}
-	// }
 	const discount = 0.35
 	const scd = props.scd
 	const gameName = props.title
 	const ean = props.ean
 	const price = roundTo(scd - scd * discount, 2)
 
-	// const saveNumOfGamesHandler = (num) => {
-	// 	props.onSaveNum(num)
-	// 	return num
-	// }
-
 	return (
 		<Card className={styles.game}>
 			<h2>{gameName}</h2>
-			<div className={styles["game-packing"]}>
+			<div className={styles["game-details"]}>
+				<div className={styles['game-properties']}>
 				<div>
 					EAN: <span>{ean}</span>
 				</div>
@@ -51,15 +41,14 @@ const Game = (props) => {
 				</div>
 				<div>
 					Cena: <span>{price}zł</span>
-				</div>
+				</div></div>
 				<div className={styles["game-price"]}>
-					Wartość: {roundTo(price * props.amount, 2)}zł
+					Wartość: <br /> {roundTo(price * props.amount, 2)}zł
 				</div>
 			</div>
 			<OrderInput
 				ean={props.ean}
 				amount={props.amount}
-				// onSaveNumOfGames={saveNumOfGamesHandler}
 				onIncrement={props.onIncrement}
 				onDecrement={props.onDecrement}
 				onTypeValue={props.typeValue}

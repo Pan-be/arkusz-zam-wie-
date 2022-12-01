@@ -1,10 +1,9 @@
-import { useState } from "react"
 import styles from "./OrderInput.module.css"
 
 const OrderInput = (props) => {
 
 	const handleChange = (e) => {
-		props.onTypeValue(props.ean, e.target.value);
+		props.onTypeValue(props.ean, parseInt(e.target.value));
 		
 	}
 
