@@ -7,7 +7,7 @@ function App() {
 	const [games, setGames] = useState([
 		{
 			id: "g1",
-			ean: 1234,
+			ean: 5904305400136,
 			title: "Brzdęk w kosmosie",
 			package: 6,
 			scd: 229.99,
@@ -15,13 +15,20 @@ function App() {
 		},
 		{
 			id: "g2",
-			ean: 222,
+			ean: 5904305400134,
 			title: "Dobry Rok",
 			package: 8,
 			scd: 199,
 			amount: 0,
 		},
-		{ id: "g3", ean: 434, title: "Rollo", package: 24, scd: 39.9, amount: 0 },
+		{
+			id: "g3",
+			ean: 5904305400130,
+			title: "Rollo",
+			package: 24,
+			scd: 39.9,
+			amount: 0,
+		},
 	])
 	// let numb
 	// const numGetter = (num) => {

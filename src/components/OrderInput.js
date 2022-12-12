@@ -1,15 +1,15 @@
 import styles from "./OrderInput.module.css"
 
 const OrderInput = (props) => {
-
 	const handleChange = (e) => {
-		props.onTypeValue(props.ean, parseInt(e.target.value));
-		
+		props.onTypeValue(props.ean, parseInt(e.target.value))
 	}
 
 	return (
 		<div className={styles.input}>
-			<label htmlFor='order'>Zamawiana ilość</label>
+			<label htmlFor='order'>
+				<span className={styles.label}>Ilość</span>
+			</label>
 			<div className={styles["input-container"]}>
 				<span
 					className={styles.prev}

@@ -3,7 +3,6 @@ import Card from "../UI/Card.js"
 import OrderInput from "../OrderInput"
 
 const Game = (props) => {
-
 	//   ---- round helper
 	const roundTo = (n, digits) => {
 		if (digits === undefined) {
@@ -26,26 +25,26 @@ const Game = (props) => {
 		<Card className={styles.game}>
 			<h2>{gameName}</h2>
 			<div className={styles["game-details"]}>
-				<div className={styles['game-properties']}>
-				<div>
+				<div className={styles.ean + " " + styles["game-prop"]}>
 					EAN: <span>{ean}</span>
 				</div>
-				<div>
+				<div className={styles.package + " " + styles["game-prop"]}>
 					Pakowane: <span>{props.package}</span>
 				</div>
-				<div>
+				<div className={styles.scd + " " + styles["game-prop"]}>
 					SCD: <span>{props.scd}zł</span>
 				</div>
-				<div>
+				<div className={styles.discount + " " + styles["game-prop"]}>
 					Rabat: <span>{100 * discount}%</span>
 				</div>
-				<div>
+				<div className={styles.price + " " + styles["game-prop"]}>
 					Cena: <span>{price}zł</span>
-				</div></div>
-				<div className={styles["game-price"]}>
-					Wartość: <br /> {roundTo(price * props.amount, 2)}zł
 				</div>
 			</div>
+			<div className={styles["game-price"]}>
+				Wartość: <br /> {roundTo(price * props.amount, 2)}zł
+			</div>
+
 			<OrderInput
 				ean={props.ean}
 				amount={props.amount}
