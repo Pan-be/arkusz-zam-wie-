@@ -1,0 +1,22 @@
+.summary {
+	background-color: #069ee3;
+}
+
+.net {
+	margin-right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1rem;
+	font-weight: bold;
+	color: white;
+	/* background-color: #40005d; */
+	/* background-color: #254f8e; */
+	background-color: #0679e3;
+	border: 1px solid white;
+	padding: 0.5rem;
+	border-radius: 12px;
+	width: 130px;
+	height: 60px;
+	margin-left: 225px;
+}

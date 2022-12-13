@@ -15,11 +15,12 @@ const Game = (props) => {
 	}
 	// -----
 
-	const discount = 0.35
+	const discount = props.discount
 	const scd = props.scd
 	const gameName = props.title
 	const ean = props.ean
 	const price = roundTo(scd - scd * discount, 2)
+	const packages = props.package
 
 	return (
 		<Card className={styles.game}>
@@ -29,7 +30,7 @@ const Game = (props) => {
 					EAN: <span>{ean}</span>
 				</div>
 				<div className={styles.package + " " + styles["game-prop"]}>
-					Pakowane: <span>{props.package}</span>
+					Pakowane: <span>{packages}</span>
 				</div>
 				<div className={styles.scd + " " + styles["game-prop"]}>
 					SCD: <span>{props.scd}zł</span>

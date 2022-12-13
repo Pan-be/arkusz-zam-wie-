@@ -30,6 +30,18 @@ function App() {
 			amount: 0,
 		},
 	])
+
+	const [orderProps, setOrderProps] = useState({
+		gross: 1987,
+		discount: 0.35,
+	})
+
+	const orderTotal = (ean) => {
+		for (const game of games) {
+			return setOrderProps({ ...orderProps, gross: orderProps + game.amount })
+		}
+	}
+
 	// let numb
 	// const numGetter = (num) => {
 	// 	// console.log(`${num} from App.js`)
@@ -81,6 +93,8 @@ function App() {
 		})
 	}
 
+	// const totalValue = (ean, typedAmount) => {}
+
 	// const generatePDF = () => {
 	// 	// console.log("clicked")
 	// 	// const doc = new jsPDF("l", "pt", "a4")
@@ -126,11 +140,14 @@ function App() {
 			<form onSubmit={submitHandler}>
 				<Games
 					games={games}
+					orderProps={orderProps}
 					// onGetNum={numGetter}
 					incrementGame={incrementGame}
 					decrementGame={decrementGame}
 					typeValue={typeValue}
+					orderTotal={orderTotal}
 				/>
+
 				<CustomerDetails
 					comNameHandler={comNameHandler}
 					comNIPHandler={comNIPHandler}

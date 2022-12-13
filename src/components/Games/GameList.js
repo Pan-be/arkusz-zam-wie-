@@ -1,9 +1,9 @@
 import Game from "./GameItem"
 import Card from "../UI/Card"
 import styles from "./Games.module.css"
+import Summary from "../Summary/Summary"
 
 const Games = (props) => {
-	
 	return (
 		<Card className={styles.games}>
 			{props.games.map((game) => {
@@ -18,9 +18,13 @@ const Games = (props) => {
 						onIncrement={props.incrementGame}
 						onDecrement={props.decrementGame}
 						typeValue={props.typeValue}
+						discount={props.orderProps.discount}
+						gross={props.orderProps.gross}
+						orderTotal={props.orderTotal}
 					/>
 				)
 			})}
+			<Summary gross={props.orderProps.gross} />
 		</Card>
 	)
 }

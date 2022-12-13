@@ -1,5 +1,6 @@
 .customers-details {
-	background-color: #a892ee;
+	/* background-color: #a892ee; */
+	background-color: #77c3e5;
 	padding: 1rem;
 	margin: 2rem auto;
 	width: 50rem;
@@ -14,8 +15,12 @@
 	cursor: pointer;
 	margin-top: 5px;
 	padding: 1rem 2rem;
-	border: 1px solid #40005d;
-	background-color: #40005d;
+	/* border: 1px solid #40005d; */
+	/* border: 1px solid #254f8e; */
+	border: 1px solid #0667e3;
+	/* background-color: #40005d; */
+	/* background-color: #254f8e; */
+	background-color: #0667e3;
 	color: white;
 	border-radius: 12px;
 	margin-right: 1rem;
@@ -23,8 +28,11 @@
 
 .customers-details button:hover,
 .customers-details button:active {
-	background-color: #510674;
-	border-color: #510674;
+	/* background-color: #510674; */
+	/* background-color: #71a1db; */
+	background-color: #0679e3;
+	/* border-color: #510674; */
+	border-color: #0679e3;
 }
 
 .customers-details button.alternative {
