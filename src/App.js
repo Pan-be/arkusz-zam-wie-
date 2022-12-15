@@ -1,5 +1,5 @@
 // import jsPDF from "jspdf"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import CustomerDetails from "./components/CustomerDetails/CustomerDetails"
 import Games from "./components/Games/GameList"
 
@@ -36,7 +36,25 @@ function App() {
 		discount: 0.35,
 	})
 
-	const orderTotal = (ean) => {
+	useEffect(() => {
+		let discount = 0.35
+		for (const game of games) {
+			discount =
+				discount +
+				Math.floor((game.amount ? game.amount : 0) / game.package) * 0.02
+		}
+		console.log(discount)
+		if (discount > 0.45) {
+			discount = 0.45
+		}
+
+		setOrderProps((prev) => ({
+			...prev,
+			discount: Math.round(discount * 100) / 100,
+		}))
+	}, [games])
+
+	const orderTotal = () => {
 		for (const game of games) {
 			return setOrderProps({ ...orderProps, gross: orderProps + game.amount })
 		}
