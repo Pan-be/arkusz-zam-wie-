@@ -20,7 +20,6 @@ const Games = (props) => {
 						typeValue={props.typeValue}
 						discount={props.orderProps.discount}
 						gross={props.orderProps.gross}
-						orderTotal={props.orderTotal}
 					/>
 				)
 			})}

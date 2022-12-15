@@ -32,7 +32,7 @@ function App() {
 	])
 
 	const [orderProps, setOrderProps] = useState({
-		gross: 1987,
+		gross: 0,
 		discount: 0.35,
 	})
 
@@ -43,7 +43,7 @@ function App() {
 				discount +
 				Math.floor((game.amount ? game.amount : 0) / game.package) * 0.02
 		}
-		console.log(discount)
+
 		if (discount > 0.45) {
 			discount = 0.45
 		}
@@ -54,11 +54,18 @@ function App() {
 		}))
 	}, [games])
 
-	const orderTotal = () => {
-		for (const game of games) {
-			return setOrderProps({ ...orderProps, gross: orderProps + game.amount })
-		}
-	}
+	useEffect(() => {
+		let sum = 0
+
+		games.forEach((val) => {
+			sum += (val.scd - val.scd * orderProps.discount) * val.amount
+		})
+
+		setOrderProps((prev) => ({
+			...prev,
+			gross: sum,
+		}))
+	}, [games])
 
 	// let numb
 	// const numGetter = (num) => {
@@ -163,7 +170,6 @@ function App() {
 					incrementGame={incrementGame}
 					decrementGame={decrementGame}
 					typeValue={typeValue}
-					orderTotal={orderTotal}
 				/>
 
 				<CustomerDetails

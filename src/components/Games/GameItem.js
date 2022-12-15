@@ -22,10 +22,6 @@ const Game = (props) => {
 	const price = roundTo(scd - scd * discount, 2)
 	const packages = props.package
 
-	const handleOrderTotal = (e) => {
-		return e.target.value
-	}
-
 	return (
 		<Card className={styles.game}>
 			<h2>{gameName}</h2>
@@ -46,8 +42,9 @@ const Game = (props) => {
 					Cena: <span>{price}zł</span>
 				</div>
 			</div>
-			<div className={styles["game-price"]} onChange={handleOrderTotal}>
-				Wartość: <br /> {roundTo(price * props.amount, 2)}zł
+			<div className={styles["game-price"]}>
+				Wartość: <br /> {roundTo(price * (props.amount ? props.amount : 0), 2)}
+				zł
 			</div>
 
 			<OrderInput
