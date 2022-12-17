@@ -1,35 +1,50 @@
 // import jsPDF from "jspdf"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import CustomerDetails from "./components/CustomerDetails/CustomerDetails"
 import Games from "./components/Games/GameList"
 
 function App() {
 	const [games, setGames] = useState([
-		{
-			id: "g1",
-			ean: 5904305400136,
-			title: "Brzdęk w kosmosie",
-			package: 6,
-			scd: 229.99,
-			amount: 0,
-		},
-		{
-			id: "g2",
-			ean: 5904305400134,
-			title: "Dobry Rok",
-			package: 8,
-			scd: 199,
-			amount: 0,
-		},
-		{
-			id: "g3",
-			ean: 5904305400130,
-			title: "Rollo",
-			package: 24,
-			scd: 39.9,
-			amount: 0,
-		},
+		// {
+		// 	id: "g1",
+		// 	ean: 5904305400136,
+		// 	title: "Brzdęk w kosmosie",
+		// 	package: 6,
+		// 	scd: 229.99,
+		// 	amount: 0,
+		// },
+		// {
+		// 	id: "g2",
+		// 	ean: 5904305400134,
+		// 	title: "Dobry Rok",
+		// 	package: 8,
+		// 	scd: 199,
+		// 	amount: 0,
+		// },
+		// {
+		// 	id: "g3",
+		// 	ean: 5904305400130,
+		// 	title: "Rollo",
+		// 	package: 24,
+		// 	scd: 39.9,
+		// 	amount: 0,
+		// },
 	])
+	const fetchGamesHandler = useCallback(async () => {
+		try {
+			const response = await fetch(
+				"https://games-list-aad54-default-rtdb.firebaseio.com/games.json"
+			)
+			const data = await response.json()
+			console.log(data)
+		} catch (error) {
+			console.log("error")
+		}
+	}, [])
+
+	useEffect(() => {
+		fetchGamesHandler()
+	}, [fetchGamesHandler])
 
 	const [orderProps, setOrderProps] = useState({
 		gross: 0,
