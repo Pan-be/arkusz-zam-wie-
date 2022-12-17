@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react"
 import CustomerDetails from "./components/CustomerDetails/CustomerDetails"
 import Games from "./components/Games/GameList"
 import Loader from "./components/Loader/Loader"
+import Error from "./components/Error/Error"
 
 function App() {
 	const [games, setGames] = useState([
@@ -41,7 +42,7 @@ function App() {
 
 		try {
 			const response = await fetch(
-				"https://games-list-aad54-default-rtdb.firebaseio.com/games.json"
+				"https://games-list-aad54-default-rtdb.firebasei.com/games.json"
 			)
 
 			if (!response.ok) {
@@ -53,7 +54,7 @@ function App() {
 		} catch (error) {
 			setError(error.message)
 		}
-		// setIsLoading(false)
+		setIsLoading(false)
 	}, [])
 
 	useEffect(() => {
@@ -204,7 +205,8 @@ function App() {
 	}
 
 	if (error) {
-		content = <p>{error}</p>
+		content = <Error error={error} />
+		// content = <p>{error}</p>
 	}
 
 	if (isLoading) {
