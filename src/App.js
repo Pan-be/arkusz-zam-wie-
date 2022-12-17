@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from "react"
 import CustomerDetails from "./components/CustomerDetails/CustomerDetails"
 import Games from "./components/Games/GameList"
+import Loader from "./components/Loader/Loader"
 
 function App() {
 	const [games, setGames] = useState([
@@ -30,17 +31,29 @@ function App() {
 		// 	amount: 0,
 		// },
 	])
+
+	const [isLoading, setIsLoading] = useState(false)
+	const [error, setError] = useState(null)
+
 	const fetchGamesHandler = useCallback(async () => {
+		setIsLoading(true)
+		setError(null)
+
 		try {
 			const response = await fetch(
 				"https://games-list-aad54-default-rtdb.firebaseio.com/games.json"
 			)
+
+			if (!response.ok) {
+				throw new Error("Something went wrong!")
+			}
+
 			const data = await response.json()
 			setGames([data])
-			console.log(data)
 		} catch (error) {
-			console.log("error")
+			setError(error.message)
 		}
+		// setIsLoading(false)
 	}, [])
 
 	useEffect(() => {
@@ -176,17 +189,32 @@ function App() {
 		console.log(order)
 	}
 
+	let content = <p>Found no movies.</p>
+
+	if (games.length > 0) {
+		content = (
+			<Games
+				games={games}
+				orderProps={orderProps}
+				incrementGame={incrementGame}
+				decrementGame={decrementGame}
+				typeValue={typeValue}
+			/>
+		)
+	}
+
+	if (error) {
+		content = <p>{error}</p>
+	}
+
+	if (isLoading) {
+		content = <Loader />
+	}
+
 	return (
 		<div className='App'>
 			<form onSubmit={submitHandler}>
-				<Games
-					games={games}
-					orderProps={orderProps}
-					// onGetNum={numGetter}
-					incrementGame={incrementGame}
-					decrementGame={decrementGame}
-					typeValue={typeValue}
-				/>
+				{content}
 
 				<CustomerDetails
 					comNameHandler={comNameHandler}

@@ -20,11 +20,11 @@ const Summary = (props) => {
 			<h2>Razem</h2>
 			<div className={styles.net}>
 				Netto: <br />
-				{roundTo(price / 1.23, 2)}zł
+				{roundTo((price ? price : 0) / 1.23, 2)}zł
 			</div>
 			<div className={gameStyles["game-price"]}>
 				Brutto: <br />
-				{roundTo(price, 2)}zł
+				{roundTo(price ? price : 0, 2)}zł
 			</div>
 		</Card>
 	)
