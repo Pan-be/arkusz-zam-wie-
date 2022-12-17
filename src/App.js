@@ -36,6 +36,7 @@ function App() {
 				"https://games-list-aad54-default-rtdb.firebaseio.com/games.json"
 			)
 			const data = await response.json()
+			setGames([data])
 			console.log(data)
 		} catch (error) {
 			console.log("error")
