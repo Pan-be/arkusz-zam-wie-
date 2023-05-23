@@ -1,19 +1,9 @@
 import Card from "../UI/Card"
 import gameStyles from "../Games/Game.module.css"
 import styles from "./Summary.module.css"
+import { roundTo } from "../../Utilities/helpers"
 
 const Summary = (props) => {
-	//   ---- round helper
-	const roundTo = (n, digits) => {
-		if (digits === undefined) {
-			digits = 0
-		}
-
-		const multiplicator = Math.pow(10, digits)
-		n = parseFloat((n * multiplicator).toFixed(11))
-		return Math.round(n) / multiplicator
-	}
-	// -----
 	const price = props.gross
 	return (
 		<Card className={gameStyles.game + " " + styles.summary}>

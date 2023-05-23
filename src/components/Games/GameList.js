@@ -9,7 +9,7 @@ const Games = (props) => {
 			{props.games.map((game) => {
 				return (
 					<Game
-						key={game.ean}
+						key={game.title}
 						title={game.title}
 						ean={game.ean}
 						package={game.package}

@@ -6,32 +6,7 @@ import Loader from "./components/Loader/Loader"
 import Error from "./components/Error/Error"
 
 function App() {
-	const [games, setGames] = useState([
-		// {
-		// 	id: "g1",
-		// 	ean: 5904305400136,
-		// 	title: "Brzdęk w kosmosie",
-		// 	package: 6,
-		// 	scd: 229.99,
-		// 	amount: 0,
-		// },
-		// {
-		// 	id: "g2",
-		// 	ean: 5904305400134,
-		// 	title: "Dobry Rok",
-		// 	package: 8,
-		// 	scd: 199,
-		// 	amount: 0,
-		// },
-		// {
-		// 	id: "g3",
-		// 	ean: 5904305400130,
-		// 	title: "Rollo",
-		// 	package: 24,
-		// 	scd: 39.9,
-		// 	amount: 0,
-		// },
-	])
+	const [games, setGames] = useState([])
 
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState(null)
@@ -42,7 +17,7 @@ function App() {
 
 		try {
 			const response = await fetch(
-				"https://games-list-aad54-default-rtdb.firebasei.com/games.json"
+				"https://games-list-aad54-default-rtdb.firebaseio.com/games.json"
 			)
 
 			if (!response.ok) {
@@ -50,7 +25,20 @@ function App() {
 			}
 
 			const data = await response.json()
-			setGames([data])
+
+			const loadedGames = []
+
+			for (const key in data) {
+				loadedGames.push({
+					title: key,
+					ean: data[key].ean,
+					package: data[key].package,
+					scd: data[key].scd,
+					amount: 0,
+				})
+			}
+			console.log(loadedGames)
+			setGames(loadedGames)
 		} catch (error) {
 			setError(error.message)
 		}

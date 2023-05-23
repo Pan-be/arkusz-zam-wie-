@@ -1,20 +1,9 @@
 import styles from "./Game.module.css"
 import Card from "../UI/Card.js"
 import OrderInput from "../OrderInput"
+import { roundTo } from "../../Utilities/helpers"
 
 const Game = (props) => {
-	//   ---- round helper
-	const roundTo = (n, digits) => {
-		if (digits === undefined) {
-			digits = 0
-		}
-
-		const multiplicator = Math.pow(10, digits)
-		n = parseFloat((n * multiplicator).toFixed(11))
-		return Math.round(n) / multiplicator
-	}
-	// -----
-
 	const discount = props.discount
 	const scd = props.scd
 	const gameName = props.title
@@ -33,7 +22,7 @@ const Game = (props) => {
 					Pakowane: <span>{packages}</span>
 				</div>
 				<div className={styles.scd + " " + styles["game-prop"]}>
-					SCD: <span>{props.scd}zł</span>
+					SCD: <span>{roundTo(props.scd, 2)}zł</span>
 				</div>
 				<div className={styles.discount + " " + styles["game-prop"]}>
 					Rabat: <span>{100 * discount}%</span>
